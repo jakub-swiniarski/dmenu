@@ -1,6 +1,3 @@
-# dmenu - dynamic menu
-# See LICENSE file for copyright and license details.
-
 include config.mk
 
 SRC = drw.c dmenu.c stest.c util.c

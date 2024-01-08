@@ -1,4 +1,3 @@
-/* See LICENSE file for copyright and license details. */
 #include <ctype.h>
 #include <locale.h>
 #include <stdio.h>
@@ -776,11 +775,6 @@ main(int argc, char *argv[])
 	if (!drw_fontset_create(drw, fonts, LENGTH(fonts)))
 		die("no fonts could be loaded.");
 	lrpad = drw->fonts->h;
-
-#ifdef __OpenBSD__
-	if (pledge("stdio rpath", NULL) == -1)
-		die("pledge");
-#endif
 
 	if (fast && !isatty(0)) {
 		grabkeyboard();
