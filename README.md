@@ -5,4 +5,5 @@ This is a fork of [dmenu](https://tools.suckless.org/dmenu/) from [suckless.org]
 - gcc,
 - make,
 - libx11,
-- libxft.
+- libxft,
+- libxinerama.
