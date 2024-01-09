@@ -1,9 +1,6 @@
-# dmenu version
 VERSION = 5.2
 
-# paths
 PREFIX = /usr/local
-MANPREFIX = $(PREFIX)/share/man
 
 X11INC = /usr/X11R6/include
 X11LIB = /usr/X11R6/lib
@@ -11,21 +8,15 @@ X11LIB = /usr/X11R6/lib
 XINERAMALIBS  = -lXinerama
 XINERAMAFLAGS = -DXINERAMA
 
-# freetype
 FREETYPELIBS = -lfontconfig -lXft
 FREETYPEINC = /usr/include/freetype2
 
-# includes and libs
 INCS = -I$(X11INC) -I$(FREETYPEINC)
 LIBS = -L$(X11LIB) -lX11 $(XINERAMALIBS) $(FREETYPELIBS)
 
-# flags
 CPPFLAGS = -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=700 -D_POSIX_C_SOURCE=200809L -DVERSION=\"$(VERSION)\" $(XINERAMAFLAGS)
 CFLAGS   = -std=c99 -pedantic -Wall -O2 $(INCS) $(CPPFLAGS)
 LDFLAGS  = $(LIBS)
-
-# compiler and linker
-CC = cc
 
 SRC = drw.c dmenu.c stest.c util.c
 OBJ = $(SRC:.c=.o)
@@ -33,15 +24,15 @@ OBJ = $(SRC:.c=.o)
 all: dmenu stest
 
 .c.o:
-	$(CC) -c $(CFLAGS) $<
+	gcc -c $(CFLAGS) $<
 
 $(OBJ): arg.h config.h drw.h
 
 dmenu: dmenu.o drw.o util.o
-	$(CC) -o $@ dmenu.o drw.o util.o $(LDFLAGS)
+	gcc -o $@ dmenu.o drw.o util.o $(LDFLAGS)
 
 stest: stest.o
-	$(CC) -o $@ stest.o $(LDFLAGS)
+	gcc -o $@ stest.o $(LDFLAGS)
 
 clean:
 	rm -f dmenu stest $(OBJ)
