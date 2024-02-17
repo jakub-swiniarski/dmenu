@@ -7,7 +7,6 @@ static const char *colors[SchemeLast][2] = {
 	/*     fg         bg       */
 	[SchemeNorm] = { "#ffffff", "#000000" },
 	[SchemeSel] = { "#ffffff", "#960f96" },
-	[SchemeOut] = { "#000000", "#960f96" },
 };
 
 static unsigned int lines = 0;
