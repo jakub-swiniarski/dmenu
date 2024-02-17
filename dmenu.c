@@ -693,8 +693,6 @@ main(int argc, char *argv[])
 	for (i = 1; i < argc; i++)
 		if (!strcmp(argv[i], "-m"))
 			mon = atoi(argv[++i]);
-		else if (!strcmp(argv[i], "-sb"))  /* selected background color */
- 			colors[SchemeSel][ColBg] = argv[++i];
 
 	if (!setlocale(LC_CTYPE, "") || !XSupportsLocale())
 		fputs("warning: no locale support\n", stderr);
