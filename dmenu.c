@@ -27,7 +27,6 @@ enum { SchemeNorm, SchemeSel, SchemeOut, SchemeLast }; /* color schemes */
 struct item {
 	char *text;
 	struct item *left, *right;
-	int out;
 };
 
 static char text[BUFSIZ] = "";
@@ -113,8 +112,6 @@ drawitem(struct item *item, int x, int y, int w)
 {
 	if (item == sel)
 		drw_setscheme(drw, scheme[SchemeSel]);
-	else if (item->out)
-		drw_setscheme(drw, scheme[SchemeOut]);
 	else
 		drw_setscheme(drw, scheme[SchemeNorm]);
 
@@ -473,8 +470,6 @@ insert:
 			cleanup();
 			exit(0);
 		}
-		if (sel)
-			sel->out = 1;
 		break;
 	case XK_Right:
 	case XK_KP_Right:
@@ -542,8 +537,6 @@ readstdin(void)
 			line[len - 1] = '\0';
 		if (!(items[i].text = strdup(line)))
 			die("strdup:");
-
-		items[i].out = 0;
 	}
 	free(line);
 	if (items)
