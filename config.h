@@ -1,5 +1,4 @@
 static int topbar = 0;
-/* -fn option overrides fonts[0]; default X11 font or font set */
 static const char *fonts[] = {
 	"monospace:size=12"
 };
@@ -10,8 +9,8 @@ static const char *colors[SchemeLast][2] = {
 	[SchemeSel] = { "#ffffff", "#960f96" },
 	[SchemeOut] = { "#000000", "#960f96" },
 };
-/* -l option; if nonzero, dmenu uses vertical list with given number of lines */
-static unsigned int lines      = 0;
+
+static unsigned int lines = 0;
 
 /*
  * Characters not considered part of a word while deleting words
